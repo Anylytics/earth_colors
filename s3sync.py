@@ -38,11 +38,11 @@ def validate():
 
 def upsync():
 	if validate():
-		s3("sync",DATA_DIR,S3_BUCKET)
+		s3("sync",DATA_DIR,S3_BUCKET,"--acl", "public-read-write")
 
 def downsync():
 	if validate():
-		s3("sync",S3_BUCKET,DATA_DIR)
+		s3("sync",S3_BUCKET,DATA_DIR,"--acl", "public-read-write")
 
 def main():
 	if len(sys.argv) != 2:
